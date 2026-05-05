@@ -23,7 +23,7 @@ export default function Education() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             Academic
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white section-heading">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
             Education
           </h2>
         </motion.div>
@@ -57,7 +57,7 @@ export default function Education() {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo-500/40 to-transparent" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                    <h3 className="font-display text-lg font-bold text-white">
+                    <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">
                       {edu.degree}
                     </h3>
                     <div className="flex items-center gap-1.5 text-xs text-slate-500 flex-shrink-0">

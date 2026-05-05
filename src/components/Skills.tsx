@@ -50,19 +50,17 @@ const pillVariants = {
   },
 };
 
-function SkillPill({
-  item,
-  bgClass,
-  level,
-}: {
-  item: string;
-  bgClass: string;
-  level: number;
-}) {
+interface SkillPillProps {
+  readonly item: string;
+  readonly bgClass: string;
+  readonly level: number;
+}
+
+function SkillPill({ item, bgClass, level }: SkillPillProps) {
   return (
     <motion.div
       variants={pillVariants}
-      className={`skill-pill group relative inline-flex flex-col gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium border ${bgClass} text-slate-300 hover:text-white cursor-default select-none overflow-hidden`}
+      className={`skill-pill group relative inline-flex flex-col gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium border ${bgClass} text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white cursor-default select-none overflow-hidden`}
       title={`Proficiency: ${level}%`}
     >
       {/* Progress bar underline */}
@@ -107,10 +105,10 @@ export default function Skills() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             Technical Skills
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white section-heading">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
             What I Work With
           </h2>
-          <p className="mt-5 text-sm text-slate-500">
+          <p className="mt-5 text-sm text-slate-500 dark:text-slate-500">
             Each skill bar reflects relative proficiency — hover to see the level.
           </p>
         </motion.div>
@@ -139,8 +137,8 @@ export default function Skills() {
                 >
                   {group.category}
                 </h3>
-                <div className="flex-1 h-px bg-white/5" />
-                <span className="text-xs text-slate-600 tabular-nums">
+                <div className="flex-1 h-px bg-slate-200 dark:bg-white/5" />
+                <span className="text-xs text-slate-500 dark:text-slate-600 tabular-nums">
                   {group.items.length} tools
                 </span>
               </div>

@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { personalInfo } from "@/data/resume";
-import { Mail, Linkedin, Phone, MapPin, Send, Copy, Check, Loader2 } from "lucide-react";
+import { Mail, Linkedin, MapPin, Send, Copy, Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // ---------- Validation schema ----------
@@ -45,17 +45,6 @@ const contactLinks = [
     copyable: false,
   },
   {
-    icon: Phone,
-    label: "Phone",
-    value: personalInfo.phone,
-    href: `tel:${personalInfo.phone}`,
-    description: "Available on WhatsApp",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/20",
-    hoverBg: "hover:bg-emerald-500/15 hover:border-emerald-400/40",
-    copyable: true,
-  },
-  {
     icon: MapPin,
     label: "Location",
     value: personalInfo.location,
@@ -69,7 +58,7 @@ const contactLinks = [
 ];
 
 // ---------- Copy button ----------
-function CopyButton({ value }: { value: string }) {
+function CopyButton({ value }: Readonly<{ value: string }>) {
   const [copied, setCopied] = useState(false);
   const copy = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -83,7 +72,7 @@ function CopyButton({ value }: { value: string }) {
     <button
       onClick={copy}
       data-cursor-hover
-      className="ml-auto flex-shrink-0 w-7 h-7 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:text-white hover:bg-white/10 transition-colors"
+      className="ml-auto flex-shrink-0 w-7 h-7 rounded-md bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
     >
       {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
     </button>
@@ -92,7 +81,7 @@ function CopyButton({ value }: { value: string }) {
 
 // White background with black text — used for all form fields
 const inputLight =
-  "w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40 transition-all duration-200";
+  "w-full bg-white dark:bg-white/5 border border-gray-300 dark:border-white/20 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-slate-200 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40 transition-all duration-200";
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
@@ -142,10 +131,10 @@ export default function Contact() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             Get in Touch
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
             Let&apos;s Work Together
           </h2>
-          <p className="mt-4 text-slate-400 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
             I&apos;m open to backend engineering roles, fintech opportunities, and collaborations.
             Drop me a message and I&apos;ll get back to you.
           </p>
@@ -182,7 +171,7 @@ export default function Contact() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-slate-500 mb-0.5">{link.description}</p>
-                    <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors truncate">
+                    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors truncate">
                       {link.value}
                     </p>
                   </div>
@@ -231,10 +220,11 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                     Name
                   </label>
                   <input
+                    id="contact-name"
                     {...register("name")}
                     placeholder="John Doe"
                     className={cn(inputLight, errors.name && "border-red-400 focus:border-red-500 focus:ring-red-500/20")}
@@ -246,10 +236,11 @@ export default function Contact() {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                  <label htmlFor="contact-email" className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                     Email Address
                   </label>
                   <input
+                    id="contact-email"
                     {...register("email")}
                     placeholder="you@example.com"
                     className={cn(inputLight, errors.email && "border-red-400 focus:border-red-500 focus:ring-red-500/20")}
@@ -262,10 +253,11 @@ export default function Contact() {
 
               {/* Subject */}
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                <label htmlFor="contact-subject" className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                   Subject
                 </label>
                 <input
+                  id="contact-subject"
                   {...register("subject")}
                   placeholder="Backend Engineer — Opportunity / Collaboration"
                   className={cn(inputLight, errors.subject && "border-red-400 focus:border-red-500 focus:ring-red-500/20")}
@@ -277,10 +269,11 @@ export default function Contact() {
 
               {/* Message */}
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1.5">
+                <label htmlFor="contact-message" className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
                   Message
                 </label>
                 <textarea
+                  id="contact-message"
                   {...register("message")}
                   rows={5}
                   placeholder="Tell me about the role, project, or how I can help..."
@@ -297,8 +290,8 @@ export default function Contact() {
                 disabled={sending}
                 data-cursor-hover
                 className="group relative w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium text-white overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
-                whileHover={!sending ? { scale: 1.01 } : {}}
-                whileTap={!sending ? { scale: 0.99 } : {}}
+                whileHover={sending ? {} : { scale: 1.01 }}
+                whileTap={sending ? {} : { scale: 0.99 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-300 group-hover:from-indigo-500 group-hover:to-violet-500" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-white/5 to-transparent" />
@@ -317,7 +310,7 @@ export default function Contact() {
                 </span>
               </motion.button>
 
-              <p className="text-xs text-center text-slate-600">
+              <p className="text-xs text-center text-slate-500 dark:text-slate-600">
                 This will open your email client with the message pre-filled.
               </p>
             </form>

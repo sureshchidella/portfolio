@@ -10,7 +10,6 @@ export const personalInfo = {
     "API Developer",
     "Fintech Engineer",
   ],
-  phone: "+91 7093353390",
   location: "Andhra Pradesh, India",
   email: "venkatasuresh051@yahoo.com",
   linkedin: "https://www.linkedin.com/in/sureshchidella",

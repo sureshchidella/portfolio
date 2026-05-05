@@ -94,13 +94,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         </span>
                       )}
                     </div>
-                    <h2 className="text-2xl font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "var(--font-syne)" }}>
                       {project.title}
                     </h2>
                   </div>
                   <button
                     onClick={onClose}
-                    className="flex-shrink-0 w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                    className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
                     data-cursor-hover
                   >
                     <X size={16} />
@@ -108,27 +108,27 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Meta row */}
-                <div className="flex flex-wrap gap-4 mb-6 p-4 rounded-xl bg-white/2 border border-white/5">
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Calendar size={14} className="text-slate-500" />
+                <div className="flex flex-wrap gap-4 mb-6 p-4 rounded-xl bg-gray-50 dark:bg-white/2 border border-gray-200 dark:border-white/5">
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <Calendar size={14} className="text-slate-400 dark:text-slate-500" />
                     {project.period}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Layers size={14} className="text-slate-500" />
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <Layers size={14} className="text-slate-400 dark:text-slate-500" />
                     {project.domain}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-400">
-                    <Building2 size={14} className="text-slate-500" />
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <Building2 size={14} className="text-slate-400 dark:text-slate-500" />
                     via Quest Global
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-slate-300 leading-relaxed mb-6">{project.description}</p>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">{project.description}</p>
 
                 {/* Key contributions */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-3">
+                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-3">
                     Key Contributions
                   </h3>
                   <ul className="space-y-3">
@@ -138,7 +138,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.07 }}
-                        className="flex gap-3 text-sm text-slate-300 leading-relaxed"
+                        className="flex gap-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed"
                       >
                         <CheckCircle2
                           size={16}
@@ -153,7 +153,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
                 {/* Tech stack */}
                 <div>
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-3">
+                  <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-3">
                     Technologies Used
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -163,7 +163,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 + i * 0.04, type: "spring", stiffness: 300, damping: 20 }}
-                        className="text-sm px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:border-white/20 hover:text-white transition-colors cursor-default"
+                        className="text-sm px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-gray-300 dark:hover:border-white/20 hover:text-slate-900 dark:hover:text-white transition-colors cursor-default"
                       >
                         {t}
                       </motion.span>

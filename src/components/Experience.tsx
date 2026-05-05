@@ -27,7 +27,7 @@ export default function Experience() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             Work History
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white section-heading">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
             Experience
           </h2>
         </motion.div>
@@ -67,7 +67,7 @@ export default function Experience() {
                         <Briefcase size={20} className="text-indigo-400" />
                       </div>
                       <div>
-                        <h3 className="font-display text-xl font-bold text-white">{exp.title}</h3>
+                        <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">{exp.title}</h3>
                         <p className="text-indigo-300 font-medium text-sm mt-0.5">{exp.company}</p>
                         <div className="flex flex-wrap gap-3 mt-2">
                           <span className="flex items-center gap-1.5 text-xs text-slate-500">
@@ -84,14 +84,14 @@ export default function Experience() {
 
                     {/* Highlights */}
                     <ul className="space-y-2.5">
-                      {exp.highlights.map((point, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={isInView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ delay: 0.3 + i * 0.07 }}
-                          className="flex gap-3 text-sm text-slate-400 leading-relaxed"
-                        >
+                    {exp.highlights.map((point) => (
+                      <motion.li
+                        key={point.slice(0, 40)}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.3 }}
+                        className="flex gap-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed"
+                      >
                           <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500/60 flex-shrink-0" />
                           <span>{point}</span>
                         </motion.li>
@@ -136,9 +136,9 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  <h4 className="font-display text-lg font-bold text-white mb-1">{award.title}</h4>
-                  <p className="text-xs text-slate-500 mb-3">{award.organization}</p>
-                  <p className="text-sm text-slate-400 leading-relaxed">{award.description}</p>
+                    <h4 className="font-display text-lg font-bold text-slate-900 dark:text-white mb-1">{award.title}</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-500 mb-3">{award.organization}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{award.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -150,7 +150,7 @@ export default function Experience() {
               transition={{ delay: 0.8 }}
               className="glass-card rounded-xl p-4 text-center"
             >
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed">
                 2+ years of continuous delivery on Mastercard and Axis Bank production systems.
               </p>
             </motion.div>

@@ -3,22 +3,19 @@
 import { useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { projects } from "@/data/resume";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import ProjectModal from "./ProjectModal";
 
 type Project = (typeof projects)[0];
 
-function ProjectCard({
-  project,
-  index,
-  isInView,
-  onClick,
-}: {
-  project: Project;
-  index: number;
-  isInView: boolean;
-  onClick: () => void;
-}) {
+interface ProjectCardProps {
+  readonly project: Project;
+  readonly index: number;
+  readonly isInView: boolean;
+  readonly onClick: () => void;
+}
+
+function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
   const [hovered, setHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -51,16 +48,19 @@ function ProjectCard({
     >
       <motion.div
         ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative h-full"
       >
-        <div
+        <button
+          type="button"
           onClick={onClick}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={handleMouseLeave}
+          onFocus={() => setHovered(true)}
+          onBlur={() => { mouseX.set(0); mouseY.set(0); setHovered(false); }}
           data-cursor-hover
-          className="relative h-full glass-card rounded-2xl overflow-hidden cursor-pointer group"
+          className="relative h-full w-full text-left glass-card rounded-2xl overflow-hidden cursor-pointer group focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none"
           style={{
             boxShadow: hovered
               ? `0 24px 64px -12px ${project.gradientFrom}35, 0 0 0 1px ${project.gradientFrom}20`
@@ -115,7 +115,7 @@ function ProjectCard({
                   </span>
                   {project.current && (
                     <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-1">
-                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />{" "}
                       Active
                     </span>
                   )}
@@ -147,8 +147,8 @@ function ProjectCard({
 
             {/* Highlights */}
             <ul className="space-y-2 mb-5">
-              {project.highlights.slice(0, 2).map((point, i) => (
-                <li key={i} className="flex gap-2.5 text-xs text-slate-500 leading-relaxed">
+              {project.highlights.slice(0, 2).map((point) => (
+                <li key={point.slice(0, 40)} className="flex gap-2.5 text-xs text-slate-500 leading-relaxed">
                   <span
                     className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
                     style={{ backgroundColor: project.gradientFrom }}
@@ -180,7 +180,7 @@ function ProjectCard({
               )}
             </div>
           </div>
-        </div>
+        </button>
       </motion.div>
     </motion.div>
   );
@@ -212,12 +212,12 @@ export default function Projects() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             Portfolio
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white section-heading">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
             Projects
           </h2>
-          <p className="mt-6 text-slate-400 max-w-xl">
+          <p className="mt-6 text-slate-600 dark:text-slate-400 max-w-xl">
             Production projects for enterprise clients — Mastercard and Axis Bank — via Quest Global.{" "}
-            <span className="text-slate-500 text-sm">Click any card for details.</span>
+            <span className="text-slate-500 dark:text-slate-500 text-sm">Click any card for details.</span>
           </p>
         </motion.div>
 

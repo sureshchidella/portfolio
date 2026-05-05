@@ -19,13 +19,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative pt-12 pb-8 border-t border-white/5">
+    <footer className="relative pt-12 pb-8 border-t border-gray-200 dark:border-white/5">
       {/* Gradient top edge */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/25 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top row */}
-        <div className="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-white/5">
+          <div className="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-gray-200 dark:border-white/5">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -34,7 +34,7 @@ export default function Footer() {
                   {personalInfo.initials}
                 </span>
               </div>
-              <span className="font-display font-bold text-white">
+              <span className="font-display font-bold text-slate-900 dark:text-white">
                 {personalInfo.firstName}
               </span>
             </div>
@@ -98,7 +98,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-xs text-slate-600 flex items-center gap-1.5"
+            className="text-xs text-slate-600 dark:text-slate-600 flex items-center gap-1.5"
           >
             Built with
             <Heart size={11} className="text-rose-500 fill-rose-500 animate-pulse" />
@@ -108,7 +108,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xs text-slate-700"
+            className="text-xs text-slate-500 dark:text-slate-700"
           >
             © {year} {personalInfo.name}
           </motion.p>

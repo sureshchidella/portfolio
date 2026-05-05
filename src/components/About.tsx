@@ -5,12 +5,14 @@ import { motion, useInView } from "framer-motion";
 import { stats, summary } from "@/data/resume";
 import { useCountUp } from "@/hooks/useTypewriter";
 
-function StatCard({ value, suffix, label, delay }: {
-  value: number;
-  suffix: string;
-  label: string;
-  delay: number;
-}) {
+interface StatCardProps {
+  readonly value: number;
+  readonly suffix: string;
+  readonly label: string;
+  readonly delay: number;
+}
+
+function StatCard({ value, suffix, label, delay }: StatCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const { count, start } = useCountUp(value, 1600);
@@ -61,7 +63,7 @@ export default function About() {
           <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
             About Me
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white section-heading">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
             Who I Am
           </h2>
         </motion.div>
@@ -81,10 +83,10 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6">
               {summary}
             </p>
-            <p className="text-slate-400 leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               I started my journey through a Diploma in Electrical & Electronics
               Engineering, then transitioned to software via a B.Tech degree.
               Since joining Quest Global in 2023, I've contributed to
@@ -131,8 +133,8 @@ export default function About() {
               >
                 <span className="text-2xl mt-0.5 flex-shrink-0">{item.icon}</span>
                 <div>
-                  <p className="text-white font-medium text-sm">{item.title}</p>
-                  <p className="text-slate-500 text-sm mt-0.5">{item.desc}</p>
+                  <p className="text-slate-900 dark:text-white font-medium text-sm">{item.title}</p>
+                  <p className="text-slate-500 dark:text-slate-500 text-sm mt-0.5">{item.desc}</p>
                 </div>
               </motion.div>
             ))}

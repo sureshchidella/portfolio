@@ -11,7 +11,7 @@ import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+      <main className="min-h-screen" style={{ backgroundColor: "var(--color-bg)" }}>
       <Navigation />
       <Hero />
       <SectionDivider />
