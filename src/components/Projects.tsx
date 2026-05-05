@@ -26,7 +26,7 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
   const rotateX = useTransform(springY, [-0.5, 0.5], ["6deg", "-6deg"]);
   const rotateY = useTransform(springX, [-0.5, 0.5], ["-6deg", "6deg"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
