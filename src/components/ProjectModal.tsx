@@ -41,7 +41,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-md"
+            className="fixed inset-0 z-[200] bg-black/60 dark:bg-black/70 backdrop-blur-md"
             onClick={onClose}
           />
 
@@ -73,7 +73,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               />
 
               <div className="p-6 md:p-8">
-                {/* Close button */}
+                {/* Header row */}
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -81,15 +81,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         className="text-xs font-semibold px-2.5 py-1 rounded-full border"
                         style={{
                           backgroundColor: `${project.clientColor}15`,
-                          borderColor: `${project.clientColor}30`,
+                          borderColor: `${project.clientColor}40`,
                           color: project.clientColor,
                         }}
                       >
                         {project.client}
                       </span>
                       {project.current && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-1">
-                          <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
+                          <span className="w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                           Active
                         </span>
                       )}
@@ -100,7 +100,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </div>
                   <button
                     onClick={onClose}
-                    className="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+                    className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-colors"
                     data-cursor-hover
                   >
                     <X size={16} />
@@ -108,7 +108,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Meta row */}
-                <div className="flex flex-wrap gap-4 mb-6 p-4 rounded-xl bg-gray-50 dark:bg-white/2 border border-gray-200 dark:border-white/5">
+                <div className="flex flex-wrap gap-4 mb-6 p-4 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)]">
                   <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                     <Calendar size={14} className="text-slate-400 dark:text-slate-500" />
                     {project.period}
@@ -134,7 +134,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <ul className="space-y-3">
                     {project.highlights.map((point, i) => (
                       <motion.li
-                        key={i}
+                        key={point.slice(0, 50)}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.07 }}
@@ -163,7 +163,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 + i * 0.04, type: "spring", stiffness: 300, damping: 20 }}
-                        className="text-sm px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-gray-300 dark:hover:border-white/20 hover:text-slate-900 dark:hover:text-white transition-colors cursor-default"
+                        className="text-sm px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-white/20 hover:text-slate-900 dark:hover:text-white transition-colors cursor-default"
                       >
                         {t}
                       </motion.span>

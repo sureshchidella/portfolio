@@ -19,13 +19,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative pt-12 pb-8 border-t border-gray-200 dark:border-white/5">
+    <footer className="relative pt-12 pb-8 border-t border-slate-200 dark:border-white/5">
       {/* Gradient top edge */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/25 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top row */}
-          <div className="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-gray-200 dark:border-white/5">
+          <div className="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-slate-200 dark:border-white/5">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -53,7 +53,7 @@ export default function Footer() {
                 <button
                   key={link.href}
                   onClick={() => handleNav(link.href)}
-                  className="text-sm text-slate-500 hover:text-indigo-400 transition-colors text-left"
+                  className="text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-left"
                   data-cursor-hover
                 >
                   {link.label}
@@ -70,7 +70,7 @@ export default function Footer() {
             <div className="space-y-2">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-400 transition-colors group"
+                className="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
                 data-cursor-hover
               >
                 <Mail size={13} />
@@ -81,7 +81,7 @@ export default function Footer() {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-400 transition-colors group"
+                className="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"
                 data-cursor-hover
               >
                 <Linkedin size={13} />
@@ -98,7 +98,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-xs text-slate-600 dark:text-slate-600 flex items-center gap-1.5"
+            className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"
           >
             Built with
             <Heart size={11} className="text-rose-500 fill-rose-500 animate-pulse" />
@@ -108,7 +108,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xs text-slate-500 dark:text-slate-700"
+            className="text-xs text-slate-500 dark:text-slate-500"
           >
             © {year} {personalInfo.name}
           </motion.p>

@@ -19,8 +19,7 @@ function StatCard({ value, suffix, label, delay }: StatCardProps) {
 
   useEffect(() => {
     if (isInView) start();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
+  }, [isInView, start]);
 
   return (
     <motion.div
@@ -39,7 +38,7 @@ function StatCard({ value, suffix, label, delay }: StatCardProps) {
           {count}
           {suffix}
         </span>
-        <p className="mt-1 text-sm text-muted font-medium">{label}</p>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium">{label}</p>
       </div>
     </motion.div>
   );
@@ -50,7 +49,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -60,7 +59,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mb-3">
             About Me
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
@@ -133,7 +132,7 @@ export default function About() {
               >
                 <span className="text-2xl mt-0.5 flex-shrink-0">{item.icon}</span>
                 <div>
-                  <p className="text-slate-900 dark:text-white font-medium text-sm">{item.title}</p>
+                  <p className="text-slate-800 dark:text-white font-medium text-sm">{item.title}</p>
                   <p className="text-slate-500 dark:text-slate-500 text-sm mt-0.5">{item.desc}</p>
                 </div>
               </motion.div>

@@ -10,7 +10,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="education" className="py-24 relative">
+    <section id="education" className="py-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -20,7 +20,7 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mb-3">
             Academic
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
@@ -32,7 +32,7 @@ export default function Education() {
         <div className="relative">
           {/* Vertical line */}
           <motion.div
-            className="absolute left-6 top-0 w-px bg-gradient-to-b from-indigo-500/50 via-violet-500/30 to-transparent"
+            className="absolute left-6 top-0 w-px bg-gradient-to-b from-indigo-400/60 via-violet-400/30 to-transparent"
             initial={{ height: 0 }}
             animate={isInView ? { height: "100%" } : {}}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
@@ -48,24 +48,24 @@ export default function Education() {
                 className="relative pl-16"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-4 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 z-10">
-                  <GraduationCap size={20} className="text-indigo-400" />
+                <div className="absolute left-0 top-4 flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/25 z-10">
+                  <GraduationCap size={20} className="text-indigo-600 dark:text-indigo-400" />
                 </div>
 
                 {/* Card */}
                 <div className="glass-card rounded-2xl p-6 relative overflow-hidden group">
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo-500/40 to-transparent" />
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo-400/50 to-transparent" />
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                     <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">
                       {edu.degree}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-500 flex-shrink-0">
                       <Calendar size={12} />
                       {edu.period}
                     </div>
                   </div>
-                  <p className="text-indigo-300 text-sm font-medium">
+                  <p className="text-indigo-600 dark:text-indigo-300 text-sm font-medium">
                     {edu.institution}
                   </p>
                 </div>
@@ -77,4 +77,3 @@ export default function Education() {
     </section>
   );
 }
-

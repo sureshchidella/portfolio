@@ -225,67 +225,67 @@ export default function Navigation() {
 					>
 						{/* Backdrop — aria-hidden keeps it out of the accessibility tree */}
 						{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-						<div
-							aria-hidden="true"
-							className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-							onClick={() => setMobileOpen(false)}
-						/>
-						<div
-							className="absolute right-0 top-0 bottom-0 w-72 bg-white dark:bg-[#0e0e1a] border-l border-gray-200 dark:border-white/5 p-6 flex flex-col shadow-2xl"
-							role="dialog"
-							aria-modal="true"
-							aria-label="Navigation menu"
-							onKeyDown={(e) => { if (e.key === "Escape") setMobileOpen(false); }}
-						>
-							<div className="flex items-center justify-between mb-8 mt-2">
-								<span className="font-display font-bold text-lg gradient-text">
-									{personalInfo.firstName}
-								</span>
-								<button
-									onClick={() => setMobileOpen(false)}
-									className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
-									aria-label="Close menu"
-								>
-									<X size={18} />
-								</button>
-							</div>
-							<nav className="flex flex-col gap-1">
-								{navLinks.map((link, i) => (
-									<motion.button
-										key={link.href}
-										initial={{ opacity: 0, x: 20 }}
-										animate={{ opacity: 1, x: 0 }}
-										transition={{ delay: i * 0.055 }}
-										onClick={() => handleLinkClick(link.href)}
-										className={cn(
-											"px-4 py-3 text-sm font-medium rounded-lg text-left transition-colors",
-											activeSection === link.href.slice(1)
-												? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20"
-												: "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
-										)}
-									>
-										{link.label}
-									</motion.button>
-								))}
-							</nav>
-							<div className="mt-6 space-y-3">
-								{/* Download Resume in mobile */}
-								<a
-									href="/Suresh_Chidella.pdf"
-									download="Suresh_Chidella.pdf"
-									className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border border-indigo-300 dark:border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-sm font-medium hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all"
-								>
-									<Download size={14} />
-									Download Resume
-								</a>
-								<a
-									href={`mailto:${personalInfo.email}`}
-									className="block w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-medium hover:from-indigo-500 hover:to-violet-500 transition-all"
-								>
-									Get in Touch
-								</a>
-							</div>
+					<div
+						aria-hidden="true"
+						className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+						onClick={() => setMobileOpen(false)}
+					/>
+					<div
+						className="absolute right-0 top-0 bottom-0 w-72 bg-[var(--color-surface)] dark:bg-[#0e0e1a] border-l border-slate-200 dark:border-white/5 p-6 flex flex-col shadow-2xl"
+						role="dialog"
+						aria-modal="true"
+						aria-label="Navigation menu"
+						tabIndex={-1}
+						onKeyDown={(e) => { if (e.key === "Escape") setMobileOpen(false); }}
+					>
+						<div className="flex items-center justify-between mb-8 mt-2">
+							<span className="font-display font-bold text-lg gradient-text">
+								{personalInfo.firstName}
+							</span>
+							<button
+								onClick={() => setMobileOpen(false)}
+								className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
+								aria-label="Close menu"
+							>
+								<X size={18} />
+							</button>
 						</div>
+						<nav className="flex flex-col gap-1">
+							{navLinks.map((link, i) => (
+								<motion.button
+									key={link.href}
+									initial={{ opacity: 0, x: 20 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{ delay: i * 0.055 }}
+									onClick={() => handleLinkClick(link.href)}
+									className={cn(
+										"px-4 py-3 text-sm font-medium rounded-lg text-left transition-colors",
+										activeSection === link.href.slice(1)
+											? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20"
+											: "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
+									)}
+								>
+									{link.label}
+								</motion.button>
+							))}
+						</nav>
+						<div className="mt-6 space-y-3">
+							<a
+								href="/Suresh_Chidella.pdf"
+								download="Suresh_Chidella.pdf"
+								className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border border-indigo-300 dark:border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-sm font-medium hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all"
+							>
+								<Download size={14} />
+								Download Resume
+							</a>
+							<a
+								href={`mailto:${personalInfo.email}`}
+								className="block w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-medium hover:from-indigo-500 hover:to-violet-500 transition-all"
+							>
+								Get in Touch
+							</a>
+						</div>
+					</div>
 					</motion.div>
 				)}
 			</AnimatePresence>

@@ -65,7 +65,7 @@ function SkillPill({ item, bgClass, level }: SkillPillProps) {
     >
       {/* Progress bar underline */}
       <span className="relative z-10">{item}</span>
-      <div className="relative h-[2px] bg-white/5 rounded-full w-full overflow-hidden">
+      <div className="relative h-[2px] bg-black/10 dark:bg-white/5 rounded-full w-full overflow-hidden">
         <motion.div
           className="absolute inset-y-0 left-0 rounded-full"
           style={{
@@ -85,8 +85,9 @@ export default function Skills() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
+
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-indigo-500/5 blur-3xl" />
@@ -102,7 +103,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mb-3">
             Technical Skills
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">
@@ -123,15 +124,25 @@ export default function Skills() {
               transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <motion.div
-                  className={`w-2.5 h-2.5 rounded-full ${group.dotClass}`}
-                  animate={{ scale: [1, 1.4, 1] }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    delay: groupIndex * 0.4,
-                  }}
-                />
+                {/* Dot: solid core + expanding ping ring */}
+                <div className="relative flex-shrink-0 flex items-center justify-center w-4 h-4">
+                  {/* Expanding ring — fades out as it grows */}
+                  {isInView && (
+                    <motion.span
+                      className={`absolute inset-0 rounded-full ${group.dotClass}`}
+                      animate={{ scale: [0.8, 2.0], opacity: [0.45, 0] }}
+                      transition={{
+                        duration: 3.2,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                        delay: groupIndex * 0.3,
+                        repeatDelay: 0.8,
+                      }}
+                    />
+                  )}
+                  {/* Solid core dot — always visible */}
+                  <span className={`block w-2.5 h-2.5 rounded-full ${group.dotClass}`} />
+                </div>
                 <h3
                   className={`font-display text-sm font-semibold uppercase tracking-widest ${group.colorClass}`}
                 >

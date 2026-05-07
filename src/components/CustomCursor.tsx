@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean | null>(null);
   const [visible, setVisible] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -20,14 +21,21 @@ export default function CustomCursor() {
   const dotY = useSpring(rawY, { stiffness: 800, damping: 30 });
 
   useEffect(() => {
+    // Only show custom cursor on fine-pointer (mouse) devices, not touch
+    const mq = window.matchMedia("(pointer: fine) and (hover: hover)");
+    setIsTouchDevice(!mq.matches);
+    if (!mq.matches) return;
+
     const move = (e: MouseEvent) => {
       rawX.set(e.clientX);
       rawY.set(e.clientY);
       setVisible(true);
     };
 
-    const enter = () => setVisible(true);
+    // Hide when mouse leaves the browser document
     const leave = () => setVisible(false);
+    // Show again when mouse re-enters
+    const enter = () => setVisible(true);
     const down = () => setClicking(true);
     const up = () => setClicking(false);
 
@@ -44,22 +52,26 @@ export default function CustomCursor() {
       );
     };
 
-    window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mousemove", checkHover, { passive: true });
-    window.addEventListener("mouseenter", enter);
-    window.addEventListener("mouseleave", leave);
-    window.addEventListener("mousedown", down);
-    window.addEventListener("mouseup", up);
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mousemove", checkHover, { passive: true });
+    // document-level mouseleave fires when cursor exits the viewport
+    document.documentElement.addEventListener("mouseleave", leave);
+    document.documentElement.addEventListener("mouseenter", enter);
+    document.addEventListener("mousedown", down);
+    document.addEventListener("mouseup", up);
 
     return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mousemove", checkHover);
-      window.removeEventListener("mouseenter", enter);
-      window.removeEventListener("mouseleave", leave);
-      window.removeEventListener("mousedown", down);
-      window.removeEventListener("mouseup", up);
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mousemove", checkHover);
+      document.documentElement.removeEventListener("mouseleave", leave);
+      document.documentElement.removeEventListener("mouseenter", enter);
+      document.removeEventListener("mousedown", down);
+      document.removeEventListener("mouseup", up);
     };
   }, [rawX, rawY]);
+
+  // Don't render on touch/coarse-pointer devices
+  if (isTouchDevice === null || isTouchDevice) return null;
 
   return (
     <>

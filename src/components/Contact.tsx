@@ -28,9 +28,9 @@ const contactLinks = [
     value: personalInfo.email,
     href: `mailto:${personalInfo.email}`,
     description: "Best way to reach me",
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10 border-indigo-500/20",
-    hoverBg: "hover:bg-indigo-500/15 hover:border-indigo-400/40",
+    color: "text-indigo-600 dark:text-indigo-400",
+    bg: "bg-indigo-50 border-indigo-200 dark:bg-indigo-500/10 dark:border-indigo-500/20",
+    hoverBg: "hover:bg-indigo-100 hover:border-indigo-300 dark:hover:bg-indigo-500/15 dark:hover:border-indigo-400/40",
     copyable: true,
   },
   {
@@ -39,9 +39,9 @@ const contactLinks = [
     value: personalInfo.linkedinHandle,
     href: personalInfo.linkedin,
     description: "Connect professionally",
-    color: "text-sky-400",
-    bg: "bg-sky-500/10 border-sky-500/20",
-    hoverBg: "hover:bg-sky-500/15 hover:border-sky-400/40",
+    color: "text-sky-600 dark:text-sky-400",
+    bg: "bg-sky-50 border-sky-200 dark:bg-sky-500/10 dark:border-sky-500/20",
+    hoverBg: "hover:bg-sky-100 hover:border-sky-300 dark:hover:bg-sky-500/15 dark:hover:border-sky-400/40",
     copyable: false,
   },
   {
@@ -50,9 +50,9 @@ const contactLinks = [
     value: personalInfo.location,
     href: undefined,
     description: "Open to remote & relocation",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
-    hoverBg: "hover:bg-amber-500/15",
+    color: "text-amber-600 dark:text-amber-400",
+    bg: "bg-amber-50 border-amber-200 dark:bg-amber-500/10 dark:border-amber-500/20",
+    hoverBg: "hover:bg-amber-100 hover:border-amber-300 dark:hover:bg-amber-500/15",
     copyable: false,
   },
 ];
@@ -102,7 +102,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Hi Suresh,\n\n${data.message}\n\n— ${data.name} (${data.email})`
     );
-    window.open(`mailto:${personalInfo.email}?subject=${subject}&body=${body}`, "_blank");
+    window.open(`mailto:${personalInfo.email}?subject=${subject}&body=${body}`, "_blank", "noopener,noreferrer");
 
     await new Promise((r) => setTimeout(r, 800));
     setSending(false);
@@ -113,7 +113,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-indigo-500/4 blur-3xl" />
@@ -128,7 +128,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="mb-14 text-center"
         >
-          <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mb-3">
             Get in Touch
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
@@ -170,7 +170,7 @@ export default function Contact() {
                     <Icon size={16} className={link.color} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs text-slate-500 mb-0.5">{link.description}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-500 mb-0.5">{link.description}</p>
                     <p className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors truncate">
                       {link.value}
                     </p>

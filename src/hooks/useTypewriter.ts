@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export function useTypewriter(
   words: string[],
@@ -28,18 +28,18 @@ export function useTypewriter(
 
     const timeout = setTimeout(
       () => {
-        if (!isDeleting) {
-          const next = currentWord.slice(0, displayText.length + 1);
-          setDisplayText(next);
-          if (next === currentWord) {
-            setIsPaused(true);
-          }
-        } else {
+        if (isDeleting) {
           const next = currentWord.slice(0, displayText.length - 1);
           setDisplayText(next);
           if (next === "") {
             setIsDeleting(false);
             setWordIndex((prev) => (prev + 1) % words.length);
+          }
+        } else {
+          const next = currentWord.slice(0, displayText.length + 1);
+          setDisplayText(next);
+          if (next === currentWord) {
+            setIsPaused(true);
           }
         }
       },
@@ -57,7 +57,7 @@ export function useCountUp(end: number, duration = 1800, startOnMount = false) {
   const [started, setStarted] = useState(startOnMount);
   const frameRef = useRef<number>(0);
 
-  const start = () => setStarted(true);
+  const start = useCallback(() => setStarted(true), []);
 
   useEffect(() => {
     if (!started) return;

@@ -63,8 +63,8 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
           className="relative h-full w-full text-left glass-card rounded-2xl overflow-hidden cursor-pointer group focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none"
           style={{
             boxShadow: hovered
-              ? `0 24px 64px -12px ${project.gradientFrom}35, 0 0 0 1px ${project.gradientFrom}20`
-              : "0 4px 24px rgba(0,0,0,0.4)",
+              ? `0 24px 64px -12px ${project.gradientFrom}25, 0 0 0 1px ${project.gradientFrom}15`
+              : "0 2px 16px rgba(0,0,0,0.08)",
             transition: "box-shadow 0.4s ease",
           }}
         >
@@ -114,41 +114,41 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
                     {project.client}
                   </span>
                   {project.current && (
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-1">
-                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />{" "}
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />{" "}
                       Active
                     </span>
                   )}
                 </div>
-                <h3 className="font-display text-lg font-bold text-white leading-snug group-hover:text-indigo-100 transition-colors duration-200">
+                <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white leading-snug group-hover:text-indigo-700 dark:group-hover:text-indigo-100 transition-colors duration-200">
                   {project.title}
                 </h3>
               </div>
               <motion.div
-                className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center bg-white/5 border border-white/8 group-hover:border-white/20 group-hover:bg-white/8 transition-colors"
+                className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600/70 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-500/25 group-hover:border-indigo-300 dark:group-hover:border-indigo-400/60 transition-colors"
                 animate={{ rotate: hovered ? 45 : 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <ChevronRight size={14} className="text-slate-400 group-hover:text-white transition-colors" />
+                <ChevronRight size={14} className="text-slate-500 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" />
               </motion.div>
             </div>
 
             {/* Meta */}
-            <div className="flex items-center gap-3 text-xs text-slate-500 mb-4">
+            <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-500 mb-4">
               <span>{project.period}</span>
-              <span className="w-1 h-1 rounded-full bg-slate-700" />
+              <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
               <span>{project.domain}</span>
             </div>
 
             {/* Description */}
-            <p className="text-sm text-slate-400 leading-relaxed mb-5 flex-1">
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5 flex-1">
               {project.description}
             </p>
 
             {/* Highlights */}
             <ul className="space-y-2 mb-5">
               {project.highlights.slice(0, 2).map((point) => (
-                <li key={point.slice(0, 40)} className="flex gap-2.5 text-xs text-slate-500 leading-relaxed">
+                <li key={point.slice(0, 40)} className="flex gap-2.5 text-xs text-slate-500 dark:text-slate-500 leading-relaxed">
                   <span
                     className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
                     style={{ backgroundColor: project.gradientFrom }}
@@ -157,7 +157,7 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
                 </li>
               ))}
               {project.highlights.length > 2 && (
-                <li className="text-xs text-slate-600">
+                <li className="text-xs text-slate-500 dark:text-slate-600">
                   +{project.highlights.length - 2} more — click to expand
                 </li>
               )}
@@ -168,13 +168,13 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
               {project.tech.slice(0, 5).map((t) => (
                 <span
                   key={t}
-                  className="text-xs px-2.5 py-1 rounded-md bg-white/4 border border-white/6 text-slate-500 hover:text-slate-300 hover:border-white/10 transition-colors"
+                  className="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600/60 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                 >
                   {t}
                 </span>
               ))}
               {project.tech.length > 5 && (
-                <span className="text-xs px-2.5 py-1 rounded-md bg-white/2 border border-white/4 text-slate-600">
+                <span className="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/40 text-slate-500 dark:text-slate-400">
                   +{project.tech.length - 5}
                 </span>
               )}
@@ -192,7 +192,7 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
@@ -209,7 +209,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <p className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3">
+          <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 tracking-widest uppercase mb-3">
             Portfolio
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white section-heading">

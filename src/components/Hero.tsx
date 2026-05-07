@@ -33,7 +33,6 @@ const PARTICLES = Array.from({ length: 22 }, (_, i) => ({
 export default function Hero() {
   const { displayText, isTyping } = useTypewriter(personalInfo.roles, 80, 42, 2200);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
 
   // Parallax on scroll
   const { scrollY } = useScroll();
@@ -43,8 +42,7 @@ export default function Hero() {
 
   // Cursor glow — only bind on devices with a fine pointer (desktops)
   useEffect(() => {
-    const mq = typeof window !== "undefined" && window.matchMedia("(pointer: fine)");
-    if (!mq || !mq.matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
     const handleMouseMove = (e: MouseEvent) => {
       if (!cursorRef.current) return;
       cursorRef.current.style.left = `${e.clientX}px`;
@@ -59,39 +57,38 @@ export default function Hero() {
 
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden grid-bg"
     >
       {/* Cursor glow */}
       <div ref={cursorRef} className="cursor-glow" />
 
-      {/* Mesh gradient orbs */}
+      {/* Mesh gradient orbs — clipped to section to prevent horizontal scroll */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute -top-40 -left-40 w-[800px] h-[800px] rounded-full"
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(99,102,241,0.16) 0%, rgba(139,92,246,0.07) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.05) 40%, transparent 70%)",
             y: y1,
           }}
-          animate={{ x: [0, 50, -20, 0], scale: [1, 1.06, 0.97, 1] }}
+          animate={{ x: [0, 40, -15, 0], scale: [1, 1.06, 0.97, 1] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -bottom-48 -right-40 w-[700px] h-[700px] rounded-full"
+          className="absolute -bottom-48 -right-40 w-[550px] h-[550px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(34,211,238,0.12) 0%, rgba(99,102,241,0.05) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(34,211,238,0.09) 0%, rgba(99,102,241,0.04) 40%, transparent 70%)",
             y: y2,
           }}
-          animate={{ x: [0, -60, 30, 0], scale: [1, 0.94, 1.06, 1] }}
+          animate={{ x: [0, -40, 20, 0], scale: [1, 0.94, 1.06, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 65%)",
           }}
           animate={{ scale: [1, 1.25, 0.88, 1], opacity: [0.4, 0.7, 0.35, 0.4] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
@@ -159,10 +156,11 @@ export default function Hero() {
           variants={item}
           className="font-display text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-5 leading-[0.9]"
         >
-          <span className="block text-slate-900 dark:text-white">{personalInfo.firstName}</span>
-          <span className="block gradient-text">
-            {personalInfo.name.split(" ").slice(1).join(" ")}
+          <span className="block text-slate-900 dark:text-white">
+            {personalInfo.firstName}{" "}
+            <span className="opacity-80">{personalInfo.middleName}</span>
           </span>
+          <span className="block gradient-text">{personalInfo.lastName}</span>
         </motion.h1>
 
         {/* Typewriter subtitle */}
@@ -274,7 +272,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.button
         onClick={scrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-slate-300 transition-colors group"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors group"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
@@ -284,10 +282,10 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 9, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-9 rounded-full border border-white/15 flex items-start justify-center pt-1.5 group-hover:border-indigo-500/40 transition-colors"
+          className="w-5 h-9 rounded-full border border-slate-300 dark:border-white/15 flex items-start justify-center pt-1.5 group-hover:border-indigo-400 dark:group-hover:border-indigo-500/40 transition-colors"
         >
           <motion.div
-            className="w-1 h-2 rounded-full bg-white/30 group-hover:bg-indigo-400/60 transition-colors"
+            className="w-1 h-2 rounded-full bg-slate-400/70 dark:bg-white/30 group-hover:bg-indigo-500 dark:group-hover:bg-indigo-400/60 transition-colors"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2.2, repeat: Infinity }}
           />
