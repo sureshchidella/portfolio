@@ -1,27 +1,29 @@
 # Resume — Suresh Venkata Chidella
 
 📍 Andhra Pradesh, India  
-📞 +91 7093353390  
 📧 [venkatasuresh051@yahoo.com](mailto:venkatasuresh051@yahoo.com)  
-🔗 [linkedin.com/in/sureshchidella](https://www.linkedin.com/in/sureshchidella)
+🔗 [linkedin.com/in/sureshchidella](https://www.linkedin.com/in/sureshchidella)  
+🌐 [sureshchidella.vercel.app](https://sureshchidella.vercel.app)
 
 ---
 
-## Summary
+## Professional Summary
 
-Software Engineer with **2+ years of experience** building microservices and REST APIs using Java and Spring Boot. Have worked on production systems for **Mastercard and Axis Bank** across payments and banking loan domains. Comfortable with performance testing, CI/CD pipelines, and event-driven architectures. Writes clean, testable code and adapts quickly when working with new systems or requirements.
+Backend Software Engineer with **2+ years of experience** building and shipping production microservices for **Mastercard's global payment platform** and **Axis Bank's lending systems**. Works primarily with Java 17 and Spring Boot, with hands-on experience in event-driven architecture using **CQRS and Event Sourcing (Axon Framework, Kafka)**. Has delivered features across cross-border money transfers, currency mandate flows, and loan management systems. Comfortable across the full backend delivery cycle, from API design and service integration to CI/CD, testing, and production monitoring.
 
 ---
 
-## Skills
+## Technical Skills
 
-| Area       | Technologies                                                              |
-|------------|---------------------------------------------------------------------------|
-| Backend    | Java, Spring Boot, Microservices, REST APIs, JPA, Hibernate, RabbitMQ    |
-| Database   | MySQL, SQL                                                                |
-| Testing    | JUnit, Mockito, JMeter, BlazeMeter, Postman, Karate                       |
-| DevOps     | Maven, Jenkins, PCF, SonarQube, Dynatrace                                 |
-| Tools      | Git, IntelliJ IDEA, Swagger/OpenAPI, Jira                                 |
+| Area                    | Technologies                                                                           |
+|-------------------------|----------------------------------------------------------------------------------------|
+| Languages & Frameworks  | Java 17, Spring Boot, Spring Data JPA, Hibernate, REST APIs, Microservices            |
+| Architecture            | Event-Driven Architecture, CQRS, Event Sourcing, Axon Framework, Kafka                |
+| Databases               | MySQL                                                                                  |
+| Caching                 | Redis (basic working knowledge)                                                        |
+| Testing                 | JUnit 5, Mockito, Karate, ArchUnit, Mutation Testing, JMeter, BlazeMeter, Postman     |
+| DevOps & CI/CD          | Jenkins, PCF (Cloud Foundry), Maven, SonarQube, JaCoCo, Dynatrace                     |
+| Tools                   | Git, IntelliJ IDEA, Swagger/OpenAPI, Jira, Agile/Scrum                                |
 
 ---
 
@@ -31,14 +33,12 @@ Software Engineer with **2+ years of experience** building microservices and RES
 **Quest Global Engineering Services Pvt Ltd** · Pune, India  
 *February 2023 – Present*
 
-- Working on microservices-based systems for payment and banking loan platforms using **Java 17 and Spring Boot** across multiple client projects.
-- Built and maintained REST APIs for use cases including user management, loan processing, payment transfers, and notifications.
-- Set up **Jenkins pipelines** for automated deployments in lower environments, reducing manual effort significantly.
-- Worked with event-driven systems using **Axon (Kafka-based) and RabbitMQ** for async communication between services.
-- Wrote test suites covering unit, integration, and performance testing using **JUnit, Mockito, JMeter, and BlazeMeter**.
-- Integrated **SonarQube and JaCoCo** for code quality checks and coverage tracking across services.
-- Collaborated with QA, design, and business teams in **Agile cycles** to ship features and fix issues before production.
-- Received the **On the Fly Award** (Sep 2023) from Quest Global for quick delivery and problem-solving on a critical project task.
+- Designed and shipped REST APIs for payment transfers, loan processing, user management, and notifications, serving real banking customers across multiple regions.
+- Built event-driven communication between microservices using **Axon Framework (Kafka-backed CQRS and Event Sourcing)** for reliable async transaction processing.
+- Set up and maintained **Jenkins CI/CD pipelines** for automated deployments across lower environments, cutting down manual release steps.
+- Put in place a multi-layer test strategy across all services: unit tests (**JUnit 5, Mockito**), integration tests, API contract tests (**Karate**), architectural checks (**ArchUnit**), performance benchmarks (**JMeter, BlazeMeter**), and mutation testing.
+- Maintained **SonarQube and JaCoCo** quality gates, catching and fixing code violations before they reached production.
+- Worked in **Agile sprints** alongside QA, design, and business teams to ship production features on schedule.
 
 ---
 
@@ -47,34 +47,31 @@ Software Engineer with **2+ years of experience** building microservices and RES
 ### Builder Loan Management System
 **Axis Bank (via Quest Global)** · *January 2026 – Present*
 
-- Working on a microservices-based loan management platform built with Spring Boot and Java 17 for Axis Bank's builder financing operations.
-- Implemented admin management functionality for builder groups, enforcing a single-admin constraint per builder group with builder group user type handling.
-- Worked on builder management service to fix reported issues and added bank detail support for properties, including property type handling for FLAT, PLOT, and RHW categories.
-- Fixed SonarQube violations across services and wrote JUnit tests to improve code coverage and maintain quality standards.
+- Building microservices for Axis Bank's builder financing platform using Spring Boot and Java 17, handling loan lifecycle management for real-estate builder groups.
+- Built the admin management module with single-admin enforcement, role-based user types, and support for bank details and property types (FLAT, PLOT, RHW).
+- Resolved SonarQube violations and wrote JUnit test suites across multiple services to bring code quality up to threshold.
 
 ### Mastercard Send
 **Mastercard (via Quest Global)** · *November 2024 – December 2025*
 
-- Implemented currency mandate to support **ANG to XCG payments** for CUW (Curacao) and SXM (Sint Maarten) regions.
-- Added new transaction purpose types including **Recycling Deposit Return** and **Value-Added Tax (VAT) Payment**.
-- Contributed to building a new unified version of the Mastercard Send payment API, consolidating and extending functionality from existing Send APIs.
+- Added currency mandate support for **ANG-to-XCG payments** for CUW (Curacao) and SXM (Sint Maarten) as part of Mastercard's Caribbean rollout.
+- Introduced new transaction purpose types (**Recycling Deposit Return, VAT Payment**) to extend payment classification.
+- Contributed to building the **unified Mastercard Send API**, consolidating multiple legacy Send APIs into one extensible interface.
 
 ### Unified Money Transfer
 **Mastercard (via Quest Global)** · *July 2023 – October 2024*
 
-- Worked on a Unified Payment API handling both **domestic and cross-border money transfers** globally.
-- Wrote and maintained test suites covering performance, stability, and architectural integrity using **Karate, ArchUnit, and mutation testing**.
-- Ran API performance and latency testing using **JMeter (JMX scripts) and BlazeMeter** in MTF and Stage environments.
-- Built Jenkins pipelines to automate deployments across lower environments, cutting down repetitive release work.
-- Explored event-driven patterns using **Axon (Kafka-based)** for payment use cases, including POCs.
+- Worked on a global **Unified Payment API** supporting domestic and cross-border transfers across multiple regions at Mastercard scale.
+- Wrote performance and latency benchmarks using **JMeter JMX scripts and BlazeMeter** across MTF and Stage environments, flagging bottlenecks before production.
+- Built **CQRS/Event Sourcing POCs** with Axon Framework (Kafka-backed) to validate async transaction processing for high-throughput payment use cases.
+- Maintained test suites covering API contracts (**Karate**), architectural rules (**ArchUnit**), and mutation testing.
 
 ### Small Business Banking
 **Axis Bank (via Quest Global)** · *March 2023 – June 2023*
 
 - Built microservices for a digital loan application platform using **Spring Boot and JPA**.
-- Enabled document upload and PAN verification features to simplify the loan processing flow.
-- Handled API testing in UAT using **Postman** and helped identify and fix issues before production release.
-- Worked with QA and design teams to ensure APIs integrated well with the frontend.
+- Implemented document upload and PAN verification features, reducing manual steps in the loan onboarding flow.
+- Tested APIs in UAT using **Postman**, catching integration issues before production release.
 
 ---
 
@@ -83,6 +80,8 @@ Software Engineer with **2+ years of experience** building microservices and RES
 | Award | Organization | Date |
 |-------|-------------|------|
 | **On the Fly Award** | Quest Global Engineering Services Pvt Ltd | September 2023 |
+
+Recognized for upskilling quickly while working at the client office and for making consistent, valuable contributions to project delivery.
 
 ---
 
@@ -99,4 +98,3 @@ Software Engineer with **2+ years of experience** building microservices and RES
 ---
 
 [← Back to Portfolio](README.md)
-

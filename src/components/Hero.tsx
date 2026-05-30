@@ -183,10 +183,10 @@ export default function Hero() {
           variants={item}
           className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-11"
         >
-          Building production-grade microservices for{" "}
+          Building production microservices for{" "}
           <span className="text-slate-900 dark:text-white font-semibold">Mastercard</span> &{" "}
           <span className="text-slate-900 dark:text-white font-semibold">Axis Bank</span>
-          {" "}— Java 17, Spring Boot, event-driven architecture.
+          {" "}— CQRS, Event Sourcing, Spring Boot, full delivery cycle.
         </motion.p>
 
         {/* CTA Buttons */}

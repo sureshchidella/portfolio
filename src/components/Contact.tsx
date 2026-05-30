@@ -146,7 +146,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-2 space-y-3"
+            className="lg:col-span-2 flex flex-col gap-3"
           >
             {contactLinks.map((link, i) => {
               const Icon = link.icon;

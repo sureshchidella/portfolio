@@ -47,6 +47,8 @@ export default function Experience() {
                   <div className="glass-card rounded-2xl p-6 lg:p-8 relative overflow-hidden group">
                     {/* Gradient top border */}
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo-500/60 via-violet-500/40 to-transparent" />
+                    {/* Left accent bar */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-indigo-500 via-violet-500/60 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* Live badge */}
                     {exp.current && (
@@ -146,7 +148,7 @@ export default function Experience() {
               className="glass-card rounded-xl p-4 text-center"
             >
               <p className="text-xs text-slate-500 dark:text-slate-500 leading-relaxed">
-                2+ years of continuous delivery on Mastercard and Axis Bank production systems.
+                Comfortable across the full backend delivery cycle — from API design and service integration to CI/CD, testing, and production monitoring.
               </p>
             </motion.div>
           </div>

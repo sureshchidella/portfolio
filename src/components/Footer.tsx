@@ -38,8 +38,8 @@ export default function Footer() {
                 {personalInfo.firstName}
               </span>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed max-w-[200px]">
-              Backend Engineer specializing in Java, Spring Boot & microservices.
+            <p className="text-xs text-slate-500 leading-relaxed max-w-[220px]">
+              Backend Software Engineer specializing in Java, Spring Boot, CQRS & microservices.
             </p>
           </div>
 

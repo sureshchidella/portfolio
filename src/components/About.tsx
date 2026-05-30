@@ -27,11 +27,12 @@ function StatCard({ value, suffix, label, delay }: StatCardProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      className="relative group glass-card rounded-2xl p-6 text-center overflow-hidden"
+      className="relative group glass-card stat-glow rounded-2xl p-6 text-center overflow-hidden"
     >
       {/* Glow on hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br from-indigo-500/5 to-violet-500/5" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <div className="relative">
         <span className="font-display text-4xl font-bold gradient-text">
@@ -88,9 +89,10 @@ export default function About() {
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
               I started my journey through a Diploma in Electrical & Electronics
               Engineering, then transitioned to software via a B.Tech degree.
-              Since joining Quest Global in 2023, I've contributed to
-              mission-critical payment and banking systems that serve real
-              customers at scale.
+              Since joining Quest Global in 2023, I&apos;ve delivered features
+              across cross-border money transfers, currency mandate flows, and
+              loan management systems — comfortable across the full backend
+              delivery cycle.
             </p>
           </motion.div>
 
@@ -109,18 +111,18 @@ export default function About() {
               },
               {
                 icon: "⚙️",
-                title: "Microservices first",
-                desc: "Designing and building distributed systems with Java 17 & Spring Boot",
+                title: "Event-driven architecture",
+                desc: "CQRS & Event Sourcing with Axon Framework, Kafka-backed async processing",
               },
               {
                 icon: "🔬",
-                title: "Quality focused",
-                desc: "Strong testing culture: JUnit, Karate, JMeter, SonarQube integration",
+                title: "Multi-layer testing",
+                desc: "JUnit 5, Karate, ArchUnit, JMeter, BlazeMeter, mutation testing & SonarQube",
               },
               {
                 icon: "🚀",
-                title: "CI/CD automation",
-                desc: "Jenkins pipelines and PCF deployments across environments",
+                title: "Full delivery cycle",
+                desc: "API design → service integration → CI/CD → testing → production monitoring",
               },
             ].map((item, i) => (
               <motion.div

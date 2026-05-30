@@ -8,15 +8,19 @@ import BackToTop from "@/components/BackToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Suresh Venkata Chidella — Software Engineer",
+  title: "Suresh Venkata Chidella — Backend Software Engineer",
   description:
-    "Software Engineer with 2+ years of experience building microservices and REST APIs using Java and Spring Boot. Worked on production systems for Mastercard and Axis Bank.",
+    "Backend Software Engineer with 2+ years of experience building production microservices for Mastercard and Axis Bank. Java 17, Spring Boot, CQRS, Event Sourcing, Axon Framework, Kafka.",
   keywords: [
-    "Software Engineer",
+    "Backend Software Engineer",
     "Java",
     "Spring Boot",
     "Microservices",
     "REST APIs",
+    "CQRS",
+    "Event Sourcing",
+    "Axon Framework",
+    "Kafka",
     "Mastercard",
     "Axis Bank",
     "Backend Engineer",
@@ -25,16 +29,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Suresh Venkata Chidella" }],
   openGraph: {
-    title: "Suresh Venkata Chidella — Software Engineer",
+    title: "Suresh Venkata Chidella — Backend Software Engineer",
     description:
-      "Backend engineer specializing in Java, Spring Boot, and microservices for enterprise clients.",
+      "Backend engineer specializing in Java, Spring Boot, CQRS/Event Sourcing, and microservices for enterprise clients.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suresh Venkata Chidella — Software Engineer",
-    description: "Backend engineer | Java · Spring Boot · Microservices · Fintech",
+    title: "Suresh Venkata Chidella — Backend Software Engineer",
+    description: "Backend Engineer | Java · Spring Boot · CQRS · Event Sourcing · Fintech",
   },
   robots: {
     index: true,
