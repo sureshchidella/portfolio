@@ -218,7 +218,12 @@ body {
 /* ─── Custom cursor: hide native cursor on desktop mouse devices only ── */
 @media (pointer: fine) and (hover: hover) {
   * {
-    cursor: none !important;
+    cursor: none;
+  }
+  /* Restore pointer cursor on interactive elements (skill checklist) */
+  a, button, [role="button"], input, textarea, select, label,
+  [data-cursor-hover], [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
   }
 }
 
@@ -334,15 +339,35 @@ textarea::placeholder {
   background: linear-gradient(to right, #6366f1, #8b5cf6, transparent);
 }
 
-/* ─── Shared utility: .text-muted ───────────────────────── */
+/* ─── Shared utility: .text-muted ───────────────────────────────────── */
 .text-muted {
   color: var(--color-fg-muted);
 }
 
-/* ─── Shared utility: .surface-alt ──────────────────────── */
+/* ─── Shared utility: .surface-alt ──────────────────────────────────── */
 /* Slightly tinted surface for meta rows / sub-panels */
 .surface-alt {
   background-color: var(--color-surface-2);
   border-color: var(--color-border);
 }
 
+/* ─── Reduced motion: respect prefers-reduced-motion ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-glow,
+  .noise::before {
+    display: none;
+  }
+}

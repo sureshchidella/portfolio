@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { personalInfo } from "@/data/resume";
-import { Mail, Linkedin, MapPin, Send, Copy, Check, Loader2 } from "lucide-react";
+import { Mail, Linkedin, MapPin, Send, Copy, Check, Loader2, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // ---------- Validation schema ----------
@@ -210,9 +210,9 @@ export default function Contact() {
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo-500/50 via-violet-500/30 to-transparent" />
 
               {/* Notice */}
-              <div className="flex items-start gap-2 px-3 py-2.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-                <span className="text-indigo-400 mt-0.5 flex-shrink-0">ℹ️</span>
-                <p className="text-xs text-indigo-300 leading-relaxed">
+              <div className="flex items-start gap-2 px-3 py-2.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20">
+                <Info size={14} className="text-indigo-500 dark:text-indigo-400 mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-indigo-600 dark:text-indigo-300 leading-relaxed">
                   Please enter your details so that I can get back to you.
                 </p>
               </div>

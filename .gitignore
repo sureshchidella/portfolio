@@ -8,6 +8,8 @@ out/
 # Production build
 build/
 dist/
+.claude
+.ui-ux-pro-max-skill/
 
 # Environment variables
 .env

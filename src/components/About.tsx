@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { stats, summary } from "@/data/resume";
 import { useCountUp } from "@/hooks/useTypewriter";
+import { Building2, Cog, TestTubes, Rocket } from "lucide-react";
 
 interface StatCardProps {
   readonly value: number;
@@ -105,26 +106,36 @@ export default function About() {
           >
             {[
               {
-                icon: "🏦",
+                icon: Building2,
                 title: "Enterprise clients",
                 desc: "Mastercard & Axis Bank — production-scale systems",
+                iconColor: "text-indigo-600 dark:text-indigo-400",
+                iconBg: "bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/25",
               },
               {
-                icon: "⚙️",
+                icon: Cog,
                 title: "Event-driven architecture",
                 desc: "CQRS & Event Sourcing with Axon Framework, Kafka-backed async processing",
+                iconColor: "text-violet-600 dark:text-violet-400",
+                iconBg: "bg-violet-50 dark:bg-violet-500/10 border-violet-200 dark:border-violet-500/25",
               },
               {
-                icon: "🔬",
+                icon: TestTubes,
                 title: "Multi-layer testing",
                 desc: "JUnit 5, Karate, ArchUnit, JMeter, BlazeMeter, mutation testing & SonarQube",
+                iconColor: "text-cyan-600 dark:text-cyan-400",
+                iconBg: "bg-cyan-50 dark:bg-cyan-500/10 border-cyan-200 dark:border-cyan-500/25",
               },
               {
-                icon: "🚀",
+                icon: Rocket,
                 title: "Full delivery cycle",
                 desc: "API design → service integration → CI/CD → testing → production monitoring",
+                iconColor: "text-emerald-600 dark:text-emerald-400",
+                iconBg: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/25",
               },
-            ].map((item, i) => (
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, x: 20 }}
@@ -132,13 +143,16 @@ export default function About() {
                 transition={{ delay: 0.4 + i * 0.1 }}
                 className="flex gap-4 p-4 glass-card rounded-xl group"
               >
-                <span className="text-2xl mt-0.5 flex-shrink-0">{item.icon}</span>
+                <div className={`flex-shrink-0 w-10 h-10 rounded-lg border flex items-center justify-center ${item.iconBg}`}>
+                  <Icon size={18} className={item.iconColor} />
+                </div>
                 <div>
                   <p className="text-slate-800 dark:text-white font-medium text-sm">{item.title}</p>
                   <p className="text-slate-500 dark:text-slate-500 text-sm mt-0.5">{item.desc}</p>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
         </div>
       </div>
